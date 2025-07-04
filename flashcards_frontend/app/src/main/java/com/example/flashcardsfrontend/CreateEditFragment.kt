@@ -13,6 +13,8 @@ class CreateEditFragment : Fragment() {
      * UI to be expanded for minimal creation interface.
      */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_create_edit, container, false)
+        val v = inflater.inflate(R.layout.fragment_create_edit, container, false)
+        android.util.Log.d("CreateEditFragment", "Inflated create/edit fragment.")
+        return v
     }
 }

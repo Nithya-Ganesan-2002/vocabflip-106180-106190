@@ -9,11 +9,14 @@ class MainPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activi
     /** Pager adapter for four main app tabs: Decks, Creation, Progress, Account/Auth. */
     override fun getItemCount(): Int = 4
 
-    override fun createFragment(position: Int): Fragment = when (position) {
-        0 -> DecksFragment()
-        1 -> CreateEditFragment()
-        2 -> ProgressFragment()
-        3 -> AuthFragment()
-        else -> throw IndexOutOfBoundsException("Unknown tab position: $position")
+    override fun createFragment(position: Int): Fragment {
+        android.util.Log.d("MainPagerAdapter", "Creating fragment for tab position: $position")
+        return when (position) {
+            0 -> DecksFragment()
+            1 -> CreateEditFragment()
+            2 -> ProgressFragment()
+            3 -> AuthFragment()
+            else -> throw IndexOutOfBoundsException("Unknown tab position: $position")
+        }
     }
 }

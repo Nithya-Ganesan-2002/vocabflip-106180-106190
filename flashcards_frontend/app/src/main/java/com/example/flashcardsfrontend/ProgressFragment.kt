@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
+import android.util.Log
 // PUBLIC_INTERFACE
 class ProgressFragment : Fragment() {
     /**
@@ -13,6 +14,8 @@ class ProgressFragment : Fragment() {
      * Will be updated with statistics and visuals.
      */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_progress, container, false)
+        val v = inflater.inflate(R.layout.fragment_progress, container, false)
+        Log.d("ProgressFragment", "Inflated progress fragment.")
+        return v
     }
 }

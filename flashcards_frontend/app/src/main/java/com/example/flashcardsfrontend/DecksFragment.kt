@@ -82,32 +82,49 @@ class DecksFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_decks, container, false)
         val recycler = root.findViewById<RecyclerView>(R.id.decks_list)
         val emptyText = root.findViewById<TextView>(R.id.empty_decks)
+        // Defensive: If fragment view inflation failed or missing IDs, return early to avoid crash/blank
+        if (recycler == null || emptyText == null) {
+            // Display basic fallback message
+            val fallback = TextView(requireContext())
+            fallback.text = "Unable to load decks UI."
+            return fallback
+        }
+
         recycler.layoutManager = LinearLayoutManager(context)
+        recycler.setHasFixedSize(true)
+        // Ensure data list is populated at fragment creation
+        if (mockDecks.isEmpty()) {
+            mockDecks.addAll(
+                listOf(
+                    MockDeck(1, "SAT Essentials", "Most frequent SAT words", 45),
+                    MockDeck(2, "French Basics", "Common French words", 30),
+                    MockDeck(3, "Biology Terms", "Intro bio definitions", 22),
+                    MockDeck(4, "Custom Deck", "Your custom vocab", 10),
+                )
+            )
+        }
         val adapter = DecksAdapter(
             decks = mockDecks,
             onView = { deck ->
                 Toast.makeText(requireContext(), "Viewing \"${deck.name}\"", Toast.LENGTH_SHORT).show()
-                // TODO: open deck details/flip view
             },
             onEdit = { deck ->
                 Toast.makeText(requireContext(), "Editing \"${deck.name}\"", Toast.LENGTH_SHORT).show()
-                // TODO: open edit deck fragment/screen
             },
             onDelete = { deck ->
                 Toast.makeText(requireContext(), "Deleted \"${deck.name}\"", Toast.LENGTH_SHORT).show()
-                // UI update handled inside adapter
-                if (mockDecks.isEmpty()) emptyText?.visibility = View.VISIBLE
+                if (mockDecks.isEmpty()) emptyText.visibility = View.VISIBLE
             }
         )
         recycler.adapter = adapter
 
-        // Show or hide empty state
+        // Ensure display state is consistent after adapter set
         if (mockDecks.isEmpty()) {
             recycler.visibility = View.GONE
-            emptyText?.visibility = View.VISIBLE
+            emptyText.visibility = View.VISIBLE
         } else {
             recycler.visibility = View.VISIBLE
-            emptyText?.visibility = View.GONE
+            emptyText.visibility = View.GONE
         }
 
         return root
