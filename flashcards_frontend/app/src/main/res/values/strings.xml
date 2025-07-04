@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">flashcards_frontend</string>
+    <string name="tab_decks">Decks</string>
+    <string name="tab_create">Create</string>
+    <string name="tab_progress">Progress</string>
+    <string name="tab_account">Account</string>
+</resources>
