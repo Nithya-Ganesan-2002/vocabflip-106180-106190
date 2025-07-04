@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardElevation="2dp"
+    card_view:cardCornerRadius="10dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="6dp"
+    card_view:cardBackgroundColor="@color/surfaceLight">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="14dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/deck_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deck Name"
+                android:textStyle="bold"
+                android:textColor="@color/textPrimary"
+                android:textSize="17sp"/>
+            <TextView
+                android:id="@+id/deck_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deck Description"
+                android:textColor="@color/textSecondary"
+                android:textSize="14sp"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+            <TextView
+                android:id="@+id/deck_card_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 cards"
+                android:textColor="@color/secondaryColor"
+                android:textSize="13sp"
+                android:paddingTop="2dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+            <ImageButton
+                android:id="@+id/deck_view_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="View"
+                android:src="@android:drawable/ic_menu_view"
+                app:tint="@color/primaryColor"/>
+            <ImageButton
+                android:id="@+id/deck_edit_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Edit"
+                android:src="@android:drawable/ic_menu_edit"
+                app:tint="@color/accentColor"/>
+            <ImageButton
+                android:id="@+id/deck_delete_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Delete"
+                android:src="@android:drawable/ic_menu_delete"
+                app:tint="@color/textSecondary"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
